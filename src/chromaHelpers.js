@@ -21,12 +21,13 @@ function generatePalette(starterPalette) {
                 rgb: chroma(scale[i]).css(),
                 rgba: chroma(scale[i]).css()
                     .replace('rgb', 'rgba')
-                    .replace(")", ",1.0")
+                    .replace(")", ",1.0)")
             });
         }
     }
     return newPalette;
 }
+
 function getRange(newColor) {
     const end = '#ffffff';
     return [
