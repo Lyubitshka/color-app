@@ -3,11 +3,12 @@ import Root from './Root';
 import Palette from './Palette';
 import './App.css';
 import PaletteList from './PaletteList';
-
+import SingleColorPalette from './SingleColorPalette';
+import PaletteRoot from './PaletteRoot';
 
 const router = createBrowserRouter([
-  { 
-    path: '/', 
+  {
+    path: '/',
     element: <Root />,
     children: [
       {
@@ -15,18 +16,27 @@ const router = createBrowserRouter([
         element: <PaletteList />
       },
       {
-        path: '/palette/:id',
-        element: <Palette />
-      }
+        path: 'palette',
+        element: <PaletteRoot />,
+        children: [
+          {
+            path: ':id',
+            element: <Palette />,
+          },
+          {
+            path: ':id/:colorId',
+            element: <SingleColorPalette />
+          }
+
+        ]
+      },
     ]
   }
 ])
 
 function App() {
-
-   return (
+  return (
     <RouterProvider router={router} />
-    
   );
 };
 

@@ -8,13 +8,13 @@ import { generatePalette } from './chromaHelpers';
 
 
 function Palette() {
-    
+
     const [level, setLevel] = useState(500);
     const [format, setFormat] = useState('hex');
 
     const { id } = useParams();
     const findPalette = id => {
-        return seedColors.find(function(palette) {
+        return seedColors.find(function (palette) {
             return palette.id === id;
         })
     }
@@ -28,7 +28,14 @@ function Palette() {
     }
 
     const colorBoxes = palette.colors[level].map(color => (
-        <ColorBox background={color[format]} name={color.name} key={color.id} />
+        <ColorBox
+            background={color[format]}
+            name={color.name}
+            key={color.id}
+            moreUrl={`/palette/${id}/${color.id}`}
+            paletteId={id}    
+            colorId={color.id}
+        />
     ));
 
     return (

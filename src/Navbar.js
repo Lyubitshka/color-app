@@ -1,5 +1,5 @@
 import { Component, useState } from 'react';
-import { MenuItem, Snackbar, Button, IconButton} from '@mui/material';
+import { MenuItem, Snackbar, Button, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Select from '@mui/material/Select';
 import Slider, { Range } from 'rc-slider';
@@ -17,11 +17,11 @@ class Navbar extends Component {
 		this.closeSnack = this.closeSnack.bind(this);
 	}
 	handleChange(event) {
-		this.setState({ format: event.target.value , open: true});
+		this.setState({ format: event.target.value, open: true });
 		this.props.handleChange(event.target.value);
 	}
 	closeSnack() {
-		this.setState({ open: false});
+		this.setState({ open: false });
 	}
 	render() {
 		const { level, changeLevel } = this.props;
@@ -64,15 +64,15 @@ class Navbar extends Component {
 					onClose={this.closeSnack}
 					action={[
 						<IconButton
-							onClick = { this.closeSnack }
+							onClick={this.closeSnack}
 							color='inherit'
 							key='close'
 							aria-label='close'
 						>
-						<CloseIcon />
+							<CloseIcon />
 						</IconButton>
-						]
-	}
+					]
+					}
 				/>
 			</nav >
 		);
