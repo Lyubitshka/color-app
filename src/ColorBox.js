@@ -12,7 +12,7 @@ function ColorBox(props) {
     }
     const { copied } = state;
     const { background, name, moreUrl, showLink } = props;
-    
+
     return (
         <CopyToClipboard text={background} onCopy={copyStateHandler}>
             <div style={{ background: background }} className="ColorBox">
@@ -32,11 +32,10 @@ function ColorBox(props) {
                 </div>
                 {showLink && (
                     <Link to={moreUrl} onClick={e => e.stopPropagation()}>
-                    <span className='see-more'>MORE</span>
-
-                </Link>
+                        <span className='see-more'>MORE</span>
+                    </Link>
                 )}
-                
+
             </div>
         </CopyToClipboard>
     );

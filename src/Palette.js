@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import './Palette.css';
 import seedColors from "./seedColors";
 import { generatePalette } from './chromaHelpers';
+import PaletteFooter from "./PaletteFooter";
 
 
 function Palette() {
@@ -13,6 +14,7 @@ function Palette() {
     const [format, setFormat] = useState('hex');
 
     const { id } = useParams();
+    
     const findPalette = id => {
         return seedColors.find(function (palette) {
             return palette.id === id;
@@ -45,14 +47,12 @@ function Palette() {
                 level={level}
                 changeLevel={changeLevel}
                 handleChange={changeFormat}
+                isSingleColor={true}
             />
             <div className='Palette-colors'>
                 {colorBoxes}
             </div>
-            <div className="Palette-footer">
-                {palette.paletteName}
-                <span className="emoji">{palette.emoji}</span>
-            </div>
+            <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
         </div>
     )
 };

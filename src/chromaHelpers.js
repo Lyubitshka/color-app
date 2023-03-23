@@ -13,7 +13,7 @@ function generatePalette(starterPalette) {
     }
     for (let color of starterPalette.colors) {
         let scale = generateScale(color.color, 10).reverse();
-        for (let i in scale ){
+        for (let i in scale) {
             newPalette.colors[levels[i]].push({
                 name: `${color.name} ${levels[i]}`,
                 id: color.name.toLowerCase().replace(/ /g, '-'),
@@ -46,4 +46,4 @@ function generateScale(newColor, numberOfColors) {
         .colors(numberOfColors);
 }
 
-export {generatePalette};
+export { generatePalette };

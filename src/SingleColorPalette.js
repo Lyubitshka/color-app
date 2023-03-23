@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+import Navbar from "./Navbar";
 import ColorBox from "./ColorBox";
+import PaletteFooter from "./PaletteFooter";
 
 import seedColors from "./seedColors";
 import { generatePalette } from './chromaHelpers';
 
 
-const SingleColorPalette = () => {
+const SingleColorPalette = (props) => {
+    const [format, setFormat] = useState('hex');
 
     const { paletteId, colorId } = useParams();
 
@@ -27,7 +31,6 @@ const SingleColorPalette = () => {
         }
         return shades.slice(1);
     }
-    console.log(gatherShades(palette, colorId));
 
     const shades = gatherShades(palette, colorId);
 
@@ -35,18 +38,30 @@ const SingleColorPalette = () => {
         <ColorBox
             key={uuid()}
             name={color.name}
-            background={color.hex}
+            background={color[format]}
             showLink={false}
         />
     ));
 
+    function changeFormat(value) {
+        setFormat(value);
+    }
+
     return (
-        <div className="Palette">
-            {colorBoxes}
-            <div className="Palette-footer">
-                {palette.paletteName}
-                <span className="emoji">{palette.emoji}</span>
+
+        <div className="SingleColorPalette Palette">
+            <Navbar
+                handleChange={changeFormat}
+                isSingleColor={false}
+            />
+            <div className="Palette-colors">
+                {colorBoxes}
+                <div className="go-back ColorBox" >
+                    <Link to={`/palette/${paletteId}`} className="back-button">GO BACK</Link>
+                </div>
             </div>
+
+            <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
         </div>
     )
 };

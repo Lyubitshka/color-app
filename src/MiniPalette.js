@@ -5,8 +5,9 @@ const styles = {
     root: {
         backgroundColor: "white",
         border: '1px solid black',
-        borderRadius: '5px',
+        borderRadius: '5%',
         padding: '0.5rem',
+        paddingBottom: '25px',
         position: 'relative',
         overflow: 'hidden',
         '&:hover': {
@@ -15,8 +16,8 @@ const styles = {
     },
     colors: {
         backgroundColor: '#dae1e4',
-        height: '120px',
-        width:'100%',
+        height: '180px',
+        width: '100%',
         borderRadius: '5%',
         overflow: 'hidden'
     },
@@ -32,10 +33,10 @@ const styles = {
     },
     emoji: {
         marginLeft: '0.5rem',
-        fontSize: '1.5rem'
-
+        fontSize: '1.5rem',
+        paddingBottom: "0.5rem"
     },
-    miniColor:{
+    miniColor: {
         height: '25%',
         width: '20%',
         display: 'inline-block',
@@ -56,13 +57,13 @@ function MiniPalette(props) {
     const miniColors = colors.map(color => (
         <div
             className={classes.miniColor}
-            style={{ backgroundColor: color.color }} 
+            style={{ backgroundColor: color.color }}
             key={color.name}
         />
     ))
     return (
         <div className={classes.root} onClick={handleClick}>
-           
+
             <div className={classes.colors}>
                 {miniColors}
             </div>
