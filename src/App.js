@@ -5,6 +5,8 @@ import './App.css';
 import PaletteList from './PaletteList';
 import SingleColorPalette from './SingleColorPalette';
 import PaletteRoot from './PaletteRoot';
+import seedColors from './seedColors';
+
 
 const router = createBrowserRouter([
   {
@@ -24,10 +26,9 @@ const router = createBrowserRouter([
             element: <Palette />,
           },
           {
-            path: ':id/:colorId',
+            path: ':paletteId/:colorId',
             element: <SingleColorPalette />
           }
-
         ]
       },
     ]

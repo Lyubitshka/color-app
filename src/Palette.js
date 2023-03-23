@@ -35,6 +35,7 @@ function Palette() {
             moreUrl={`/palette/${id}/${color.id}`}
             paletteId={id}    
             colorId={color.id}
+            showLink={true}
         />
     ));
 
