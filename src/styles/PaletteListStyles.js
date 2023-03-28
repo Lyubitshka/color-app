@@ -19,7 +19,13 @@ const useStyles = createUseStyles(
           nav: {
             display: "flex",
             width: "100%",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            alignItems: 'center',
+            color: 'white',
+            '& a': {
+                color: 'white'
+            }
+            
           },
           palettes: {
             boxSizing: "border-box",

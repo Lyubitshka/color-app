@@ -4,6 +4,7 @@ import Palette from './Palette';
 import PaletteList from './PaletteList';
 import SingleColorPalette from './SingleColorPalette';
 import PaletteRoot from './PaletteRoot';
+import NewPalette from './NewPalette';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
         path: 'palette',
         element: <PaletteRoot />,
         children: [
+
           {
             path: ':id',
             element: <Palette />,
@@ -25,7 +27,11 @@ const router = createBrowserRouter([
           {
             path: ':paletteId/:colorId',
             element: <SingleColorPalette />
-          }
+          },
+          {
+            path: 'new',
+            element: <NewPalette />,
+          },
         ]
       },
     ]
