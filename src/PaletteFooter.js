@@ -1,9 +1,11 @@
-function PaletteFooter(props) {
-    return (
+import useStyles from './styles/PaletteFooterStyles'
 
-        <div className="Palette-footer">
+function PaletteFooter(props) {
+    const classes = useStyles(props);
+    return (
+        <div className={classes.PaletteFooter}>
             {props.paletteName}
-            <span className="emoji">{props.emoji}</span>
+            <span className={classes.emoji}>{props.emoji}</span>
         </div>
     )
 }

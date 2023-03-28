@@ -2,19 +2,19 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import ColorBox from "./ColorBox"
 import Navbar from "./Navbar";
-import './Palette.css';
+import useStyles from "./styles/PaletteStyles";
+
 import seedColors from "./seedColors";
 import { generatePalette } from './chromaHelpers';
 import PaletteFooter from "./PaletteFooter";
 
 
-function Palette() {
-
+function Palette(props) {
     const [level, setLevel] = useState(500);
     const [format, setFormat] = useState('hex');
 
     const { id } = useParams();
-    
+    const classes = useStyles(props);
     const findPalette = id => {
         return seedColors.find(function (palette) {
             return palette.id === id;
@@ -37,19 +37,19 @@ function Palette() {
             moreUrl={`/palette/${id}/${color.id}`}
             paletteId={id}    
             colorId={color.id}
-            showLink={true}
+            showingFullPalette={true}
         />
     ));
 
     return (
-        <div className="Palette">
+        <div className={classes.Palette}>
             <Navbar
                 level={level}
                 changeLevel={changeLevel}
                 handleChange={changeFormat}
                 isSingleColor={true}
             />
-            <div className='Palette-colors'>
+            <div className={classes.colors}>
                 {colorBoxes}
             </div>
             <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />

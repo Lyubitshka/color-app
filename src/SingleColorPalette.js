@@ -5,14 +5,16 @@ import Navbar from "./Navbar";
 import ColorBox from "./ColorBox";
 import PaletteFooter from "./PaletteFooter";
 
+import useStyles from './styles/PaletteStyles';
+
 import seedColors from "./seedColors";
 import { generatePalette } from './chromaHelpers';
-
 
 const SingleColorPalette = (props) => {
     const [format, setFormat] = useState('hex');
 
     const { paletteId, colorId } = useParams();
+    const classes = useStyles(props);
 
     const findPalette = paletteId => {
         return seedColors.find(function (palette) {
@@ -39,7 +41,7 @@ const SingleColorPalette = (props) => {
             key={uuid()}
             name={color.name}
             background={color[format]}
-            showLink={false}
+            showingFullPalette={false}
         />
     ));
 
@@ -49,15 +51,15 @@ const SingleColorPalette = (props) => {
 
     return (
 
-        <div className="SingleColorPalette Palette">
+        <div className={classes.Palette}>
             <Navbar
                 handleChange={changeFormat}
                 isSingleColor={false}
             />
-            <div className="Palette-colors">
+            <div className={classes.colors}>
                 {colorBoxes}
-                <div className="go-back ColorBox" >
-                    <Link to={`/palette/${paletteId}`} className="back-button">GO BACK</Link>
+                <div className={classes.goBack} >
+                    <Link to={`/palette/${paletteId}`} >GO BACK</Link>
                 </div>
             </div>
 
